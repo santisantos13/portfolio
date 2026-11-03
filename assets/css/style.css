@@ -1,18 +1,16 @@
 /* Definição global das cores do site */
 :root {
-    --cor-fundo: #101123;
-    --cor-card: #1b1d3a;
-    --cor-texto-principal: #f4f4f4;
-    --cor-texto-secundario: #8f94a6;
-    --cor-destaque: #ffd000;
+  --cor-fundo: #101123;
+  --cor-card: #1b1d3a;
+  --cor-texto-principal: #f4f4f4;
+  --cor-texto-secundario: #8f94a6;
+  --cor-destaque: #ffd000;
 }
 
 body {
   background-color: var(--cor-fundo);
   color: var(--cor-texto-principal);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0;
-  padding: 0;
 }
 
 /* --- Seção de Início (Topo) --- */
@@ -49,32 +47,30 @@ body {
   height: 24px;
 }
 
-.inicio a img{
+.inicio a img {
   width: auto;
   height: 18px;
-  margin: 0;
 }
 
 .inicio a:hover {
-  padding: 10px 18px;
+  transform: scale(1.05);
 }
 
 /* --- Seção de Apresentação (Meio) --- */
 .paginas {
   display: flex;
-  align-items: center;       /* Alinha o centro vertical do texto com o da foto */
-  justify-content: center;   /* Centraliza o conjunto inteiro na tela */
-  gap: 50px;                 /* Dá uma distância confortável entre a foto e o texto */
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
   max-width: 900px;
-  margin: 0 auto 60px auto;  /* Centraliza a div no meio do site */
+  margin: 0 auto 60px auto;
   padding: 0 20px;
 }
 
-/* Bloco da Imagem e Legenda */
 .apresentacao {
   display: flex;
-  flex-direction: column;    /* Garante que a legenda fique EMBAIXO da imagem */
-  align-items: center;       /* Centraliza a legenda com a foto */
+  flex-direction: column;
+  align-items: center;
 }
 
 .apresentacao img {
@@ -90,42 +86,40 @@ body {
   color: var(--cor-texto-secundario);
 }
 
-/* --- Bloco da História (Melhorado) --- */
+/* --- Bloco da História --- */
 .historia {
-  background-color: var(--cor-card);               /* Fundo sutil para destacar o texto */
-  border-left: 4px solid var(--cor-destaque);       /* Remove a borda total e adiciona um detalhe elegante na esquerda */
-  max-width: 550px;                                 /* Aumentado levemente para acomodar melhor os blocos de texto */
-  padding: 30px;                                    /* Espaço interno para o texto não encostar nas bordas */
-  border-radius: 0 12px 12px 0;                     /* Bordas arredondadas suavizadas (exceto na esquerda) */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);       /* Sombra sutil para dar profundidade */
+  background-color: var(--cor-card);
+  border-left: 4px solid var(--cor-destaque);
+  max-width: 550px;
+  padding: 30px;
+  border-radius: 0 12px 12px 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .historia h2 {
   color: var(--cor-texto-principal);
   font-size: 2.2rem;
-  margin: 0 0 20px 0;                               /* Margem inferior limpa para afastar do primeiro parágrafo */
+  margin: 0 0 20px 0;
   text-align: left;
 }
 
-/* Distribuição e espaçamento dos parágrafos */
 .historia p {
   color: var(--cor-texto-secundario);
-  text-align: justify;                              /* Alinhamento justificado deixa blocos longos mais simétricos */
-  line-height: 1.7;                                 /* Aumentado para 1.7 para dar ainda mais respiro na leitura */
+  text-align: justify;
+  line-height: 1.7;
   font-size: 1.05rem;
-  margin-bottom: 20px;                              /* O segredo da distribuição: empurra o próximo parágrafo para baixo */
+  margin-bottom: 20px;
 }
 
-/* Remove a margem do último parágrafo para não quebrar o padding interno do card */
 .historia p:last-child {
   margin-bottom: 0;
 }
 
 .conteudo-historia {
-  max-height: 230px;           /* Ajustado para alinhar certinho com o tamanho da sua foto */
+  max-height: 230px;
   overflow: hidden;
   position: relative;
-  transition: max-height 0.5s ease; /* Adicionado o 's' para funcionar a transição suave */
+  transition: max-height 0.5s ease;
 }
 
 .conteudo-historia::after {
@@ -140,10 +134,6 @@ body {
   transition: opacity 0.3s ease;
 }
 
-.conteudo-historia.expandido {
-  max-height: 1500px;          /* Altura limite aumentada para exibir todo o texto novo */
-}
-
 .conteudo-historia.expandido::after {
   opacity: 0;
 }
@@ -155,7 +145,7 @@ body {
   font-weight: bold;
   font-size: 1rem;
   cursor: pointer;
-  padding: 15px 0 0 0;         /* Um espacinho extra no topo do botão */
+  padding: 15px 0 0 0;
   margin-top: 10px;
   display: inline-block;
   font-family: inherit;
@@ -164,12 +154,8 @@ body {
 
 .botao-expandir:hover {
   text-decoration: underline;
-  color: #fff; 
+  color: #fff;
 }
-
-
-
-
 
 /* --- Rodapé --- */
 footer {
