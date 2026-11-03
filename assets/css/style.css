@@ -177,3 +177,20 @@ footer {
   padding: 30px 20px;
   border-top: 1px solid var(--cor-card);
 }
+
+/* --- Versão para celular --- */
+@media (max-width: 768px) {
+  .paginas {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .historia {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .historia p {
+    text-align: left;
+  }
+}
