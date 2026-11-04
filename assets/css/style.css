@@ -92,6 +92,13 @@ body {
   color: var(--cor-texto-secundario);
 }
 
+.apresentacao img{
+  transition: transform 0.3s ease;
+}
+.apresentacao img:hover{
+  transform: scale(1.03);
+}
+
 /* --- Bloco da História --- */
 .historia {
   background-color: var(--cor-card);
