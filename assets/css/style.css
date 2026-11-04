@@ -7,6 +7,10 @@
   --cor-destaque: #ffd000;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--cor-fundo);
   color: var(--cor-texto-principal);
@@ -34,9 +38,9 @@ body {
   color: var(--cor-destaque);
   text-decoration: none;
   font-weight: bold;
-  margin: 0 15px;
+  margin: 8px 10px;
   border: 1px solid var(--cor-destaque);
-  padding: 8px 16px;
+  padding: 12px 24px;
   border-radius: 4px;
   transition: all 0.3s ease;
 
@@ -44,7 +48,6 @@ body {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  height: 24px;
 }
 
 .inicio a img {
@@ -71,6 +74,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  align-self: flex-start;
+  position: sticky;
+  top: 40px;
 }
 
 .apresentacao img {
@@ -164,11 +170,76 @@ footer {
   border-top: 1px solid var(--cor-card);
 }
 
-/* --- Versão para celular --- */
+/* --- Animação de entrada do topo (ao carregar a página) --- */
+@keyframes entrada {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.inicio h1 {
+  animation: entrada 0.8s ease backwards;
+}
+
+.inicio p {
+  animation: entrada 0.8s ease 0.15s backwards;
+}
+
+.inicio a {
+  animation: entrada 0.8s ease 0.3s backwards;
+}
+
+/* --- Animações ao rolar a página --- */
+.revelar {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.revelar.zoom {
+  transform: scale(0.8);
+}
+
+.revelar.visivel {
+  opacity: 1;
+  transform: none;
+}
+
+/* --- Para quem prefere menos movimento --- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .inicio h1,
+  .inicio p,
+  .inicio a {
+    animation: none;
+  }
+
+  .revelar,
+  .revelar.zoom {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* --- Versão para celular (sempre no final do arquivo) --- */
 @media (max-width: 768px) {
   .paginas {
     flex-direction: column;
     gap: 30px;
+  }
+
+  .apresentacao {
+    position: static;
+    align-self: center;
   }
 
   .historia {
