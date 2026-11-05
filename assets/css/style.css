@@ -217,27 +217,107 @@ footer {
   transform: none;
 }
 
-/* --- Para quem prefere menos movimento --- */
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  .inicio h1,
-  .inicio p,
-  .inicio a {
-    animation: none;
-  }
-
-  .revelar,
-  .revelar.zoom {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
+/* --- Seção Projetos --- */
+.projetos {
+  max-width: 900px;
+  margin: 0 auto 60px auto;
+  padding: 0 20px;
 }
 
-/* --- Versão para celular (sempre no final do arquivo) --- */
+.titulo-projetos{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+}
+.titulo-projetos::before,.titulo-projetos::after{
+  content: '';
+  flex: 1;
+  height: 1px;
+  background-color: var(--cor-card);
+}
+.projeto{
+  background-color: var(--cor-card);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.projeto.destaque{
+  border-left: 4px solid var(--cor-destaque);
+  border-right: 4px solid var(--cor-destaque);
+}
+
+.tecnologias {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.tecnologias li{
+  background-color: var(--cor-fundo);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  padding: 6px 14px;
+}
+.selo{
+  
+  background-color: var(--cor-destaque);
+  color: var(--cor-fundo);
+  border-radius: 999px;
+  font-size: 1.2rem;
+  padding: 3px 13px;
+  margin-bottom: 20px;
+}
+.projeto-texto h3 {
+  margin-top: 8px;
+  
+  color: var(--cor-texto-principal);
+
+}
+.projeto-texto p {
+  color: var(--cor-texto-secundario);
+  text-align: left;
+  line-height: 1.7;
+  font-size: 1rem;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+.projeto-texto a {
+  color: var(--cor-destaque);
+  
+  text-decoration: none;
+  margin: auto;
+}
+.projeto-texto a:hover{
+  font-size: 1.1rem;
+}
+
+.projeto a::after{
+  content: " →";
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+.projeto a::hover::after {
+  transform:translate(4px)
+}
+
+
+
+
+
+
+
+
+
+/* --- Versão para celular --- */
 @media (max-width: 768px) {
   .paginas {
     flex-direction: column;
