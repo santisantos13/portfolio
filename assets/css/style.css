@@ -242,12 +242,12 @@ body {
 
 .selo {
   display: inline-block;
-  margin-bottom: 20px;
+  margin-bottom: 8px;
   padding: 3px 13px;
   background-color: var(--cor-destaque);
   border-radius: 999px;
   color: var(--cor-fundo);
-  font-size: 1.2rem;
+  font-size: 0.85rem;
   animation: pulsar 2.5s ease-in-out infinite;
 }
 
@@ -266,13 +266,12 @@ body {
 }
 
 .projeto-texto a {
-  margin: auto;
   color: var(--cor-destaque);
   text-decoration: none;
 }
 
 .projeto-texto a:hover {
-  font-size: 1.1rem;
+  text-decoration: overline;
 }
 
 .projeto a::after {
