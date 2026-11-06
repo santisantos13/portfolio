@@ -398,6 +398,7 @@ footer {
 }
 
 /* --- Versão para celular --- */
+
 @media (max-width: 768px) {
   .paginas {
     flex-direction: column;
@@ -428,17 +429,6 @@ footer {
     width: 100%;
   }
 
-  .tecnologias {
-    margin-top: 16px;
-    max-width: none;
-    justify-content: flex-start;
-  }
-
-  .projeto-links {
-    margin-top: 0;
-
-  }
-
   .projeto.com-demo {
     grid-template-columns: 1fr auto;
     grid-template-areas:
@@ -446,11 +436,23 @@ footer {
       "links demo"
       "tecnologias tecnologias";
     align-items: center;
+    gap: 16px 8px;
+  }
 
+  .com-demo .projeto-links {
+    margin-top: 0;
+    justify-self: flex-start;
   }
 
   .com-demo .sem-seta {
     align-self: center;
+    justify-self: flex-end;
+    white-space: nowrap;
+  }
 
+  .tecnologias {
+    margin-top: 0;
+    max-width: none;
+    justify-content: flex-start;
   }
 }
