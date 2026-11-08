@@ -1,4 +1,6 @@
-/* Definição global das cores do site */
+/* ==========================================================
+   CORES E BASE
+   ========================================================== */
 :root {
   --cor-fundo: #101123;
   --cor-card: #1b1d3a;
@@ -17,7 +19,9 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* --- Animação de entrada do topo (ao carregar a página) --- */
+/* ==========================================================
+   ANIMAÇÕES (keyframes)
+   ========================================================== */
 @keyframes entrada {
   from {
     opacity: 0;
@@ -27,6 +31,28 @@ body {
   to {
     opacity: 1;
     transform: none;
+  }
+}
+
+@keyframes zoom-entrada {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes sublinhar {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
   }
 }
 
@@ -42,167 +68,196 @@ body {
   }
 }
 
-/* --- Seção de Início (Topo) --- */
-.inicio {
-  text-align: center;
-  padding: 60px 20px 40px 20px;
-}
-
-.inicio h1 {
-  font-size: 2.8rem;
-  margin-bottom: 10px;
-  animation: entrada 0.8s ease backwards;
-}
-
-.inicio p {
-  font-size: 1.2rem;
-  color: var(--cor-texto-secundario);
-  margin-bottom: 25px;
-  animation: entrada 0.8s ease 0.15s backwards;
-}
-
-.inicio a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin: 8px 10px;
-  padding: 12px 24px;
-  border: 1px solid var(--cor-destaque);
-  border-radius: 4px;
-  color: var(--cor-destaque);
-  font-weight: bold;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  animation: entrada 0.8s ease 0.3s backwards;
-}
-
-.inicio a img {
-  width: auto;
-  height: 18px;
-}
-
-.inicio a:hover {
-  transform: scale(1.05);
-}
-
-/* --- Seção de Apresentação (Meio) --- */
-.paginas {
+/* ==========================================================
+   MENU
+   ========================================================== */
+.menu {
+  position: sticky;
+  top: 0;
+  z-index: 10;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 50px;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background-color: var(--cor-fundo);
+  border-bottom: 1px solid var(--cor-card);
+}
+
+.menu-logo {
+  color: var(--cor-texto-principal);
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.menu-links {
+  display: flex;
+  gap: 24px;
+}
+
+.menu-links a {
+  color: var(--cor-texto-secundario);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.menu-links a:hover {
+  color: var(--cor-destaque);
+}
+
+/* Faz a rolagem parar antes do menu cobrir o título da seção */
+section[id] {
+  scroll-margin-top: 80px;
+}
+
+@media (max-width: 768px) {
+  .menu {
+    justify-content: center;
+    padding: 12px 16px;
+  }
+
+  .menu-logo {
+    display: none;
+  }
+
+  .menu-links {
+    gap: 12px;
+    font-size: 0.85rem;
+  }
+}
+
+/* ==========================================================
+   TOPO
+   ========================================================== */
+.topo {
+  display: flex;
+  align-items: center;
+  gap: 40px;
   max-width: 900px;
-  margin: 0 auto 60px auto;
+  margin: 60px auto 120px;
   padding: 0 20px;
 }
 
-.apresentacao {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  align-self: flex-start;
-  position: sticky;
-  top: 40px;
-}
-
-.apresentacao img {
-  width: 230px;
-  height: 230px;
-  object-fit: cover;
+.topo-foto {
+  width: 200px;
+  height: 200px;
+  border: 4px solid var(--cor-destaque);
   border-radius: 50%;
+  object-fit: cover;
   transition: transform 0.3s ease;
+  animation: zoom-entrada 0.8s ease backwards;
 }
 
-.apresentacao img:hover {
+.topo-foto:hover {
   transform: scale(1.03);
 }
 
-.apresentacao .legenda {
-  margin-top: 12px;
-  font-size: 1rem;
-  color: var(--cor-texto-secundario);
-}
-
-/* --- Bloco da História --- */
-.historia {
-  max-width: 550px;
-  padding: 30px;
-  background-color: var(--cor-card);
-  border-left: 4px solid var(--cor-destaque);
-  border-radius: 0 12px 12px 0;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}
-
-.historia h2 {
-  margin: 0 0 20px 0;
+.topo-texto h1 {
+  margin: 0 0 8px;
+  font-size: 2.4rem;
   color: var(--cor-texto-principal);
-  font-size: 2.2rem;
-  text-align: left;
+  animation: entrada 0.8s ease backwards;
 }
 
-.historia p {
-  margin-bottom: 20px;
-  color: var(--cor-texto-secundario);
-  font-size: 1.05rem;
-  line-height: 1.7;
-  text-align: justify;
-}
-
-.historia p:last-child {
-  margin-bottom: 0;
-}
-
-.conteudo-historia {
+.nome {
   position: relative;
-  max-height: 230px;
-  overflow: hidden;
-  transition: max-height 0.5s ease;
+  display: inline-block;
+  color: var(--cor-destaque);
 }
 
-.conteudo-historia::after {
+.nome::after {
   content: '';
   position: absolute;
-  bottom: 0;
   left: 0;
+  bottom: -4px;
   width: 100%;
-  height: 60px;
-  background: linear-gradient(transparent, var(--cor-card));
-  pointer-events: none;
-  transition: opacity 0.3s ease;
+  height: 3px;
+  background-color: var(--cor-destaque);
+  border-radius: 2px;
+  transform-origin: left;
+  animation: sublinhar 0.8s ease 0.8s backwards;
 }
 
-.conteudo-historia.expandido::after {
-  opacity: 0;
+.topo-subtitulo {
+  margin: 0 0 20px;
+  font-size: 1.2rem;
+  color: var(--cor-texto-secundario);
 }
 
-.botao-expandir {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 15px 0 0 0;
-  background: none;
-  border: none;
+.topo-resumo {
+  margin: 0 0 20px;
+}
+
+.topo-resumo p {
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--cor-texto-principal);
+}
+
+.topo-resumo strong {
   color: var(--cor-destaque);
-  font-family: inherit;
-  font-size: 1rem;
+}
+
+.topo-habilidades {
+  list-style: none;
+  margin: 0 0 25px;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.topo-habilidades li {
+  background-color: var(--cor-card);
+  color: var(--cor-texto-principal);
+  font-size: 0.85rem;
+  padding: 6px 14px;
+  border-radius: 999px;
+}
+
+.topo-botoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.topo-botao {
+  color: var(--cor-destaque);
+  border: 1px solid var(--cor-destaque);
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
   font-weight: bold;
-  cursor: pointer;
-  transition: color 0.2s;
+  transition: background-color 0.2s ease, transform 0.3s ease;
 }
 
-.botao-expandir:hover {
-  color: #fff;
-  text-decoration: underline;
+.topo-botao:hover {
+  background-color: rgba(255, 208, 0, 0.1);
+  transform: scale(1.05);
 }
 
-/* --- Seção Projetos --- */
-.projetos {
-  max-width: 900px;
-  margin: 0 auto 60px auto;
-  padding: 0 20px;
+@media (max-width: 768px) {
+  .topo {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .topo-texto h1 {
+    font-size: 2rem;
+  }
+
+  .topo-habilidades,
+  .topo-botoes {
+    justify-content: center;
+  }
 }
 
-.titulo-projetos {
+/* ==========================================================
+   TÍTULO DE SEÇÃO (com as linhas dos lados)
+   ========================================================== */
+.titulo-projetos,
+.titulo-secao {
   display: flex;
   align-items: center;
   gap: 20px;
@@ -211,11 +266,22 @@ body {
 }
 
 .titulo-projetos::before,
-.titulo-projetos::after {
+.titulo-projetos::after,
+.titulo-secao::before,
+.titulo-secao::after {
   content: '';
   flex: 1;
   height: 1px;
   background-color: var(--cor-card);
+}
+
+/* ==========================================================
+   PROJETOS
+   ========================================================== */
+.projetos {
+  max-width: 900px;
+  margin: 0 auto 120px auto;
+  padding: 0 20px;
 }
 
 .projeto {
@@ -223,7 +289,7 @@ body {
   justify-content: space-between;
   align-items: center;
   gap: 24px;
-  margin-bottom: 20px;
+  margin-bottom: 60px;
   padding: 20px 24px;
   background-color: var(--cor-card);
   border-radius: 12px;
@@ -236,10 +302,8 @@ body {
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
 }
 
-
 .projeto.destaque {
   border: 1px solid var(--cor-destaque);
-
 }
 
 .projeto-links {
@@ -263,14 +327,14 @@ body {
   animation: pulsar 2.5s ease-in-out infinite;
 }
 
-.projeto-texto h3 {
-  margin-top: 8px;
-  color: var(--cor-texto-principal);
-}
-
 .projeto-texto {
   flex: 1;
   min-width: 0;
+}
+
+.projeto-texto h3 {
+  margin-top: 8px;
+  color: var(--cor-texto-principal);
 }
 
 .projeto-texto p {
@@ -349,6 +413,7 @@ body {
   justify-self: end;
 }
 
+/* Etiquetas de tecnologia dentro dos cards de projeto */
 .tecnologias {
   display: flex;
   flex-wrap: wrap;
@@ -374,51 +439,7 @@ body {
   color: var(--cor-destaque);
 }
 
-/* --- Animações ao rolar a página --- */
-.revelar {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.revelar.zoom {
-  transform: scale(0.8);
-}
-
-.revelar.visivel {
-  opacity: 1;
-  transform: none;
-}
-
-/* --- Rodapé --- */
-footer {
-  text-align: center;
-  padding: 30px 20px;
-  border-top: 1px solid var(--cor-card);
-}
-
-/* --- Versão para celular --- */
-
 @media (max-width: 768px) {
-  .paginas {
-    flex-direction: column;
-    gap: 30px;
-  }
-
-  .apresentacao {
-    position: static;
-    align-self: center;
-  }
-
-  .historia {
-    width: 100%;
-    padding: 20px;
-  }
-
-  .historia p {
-    text-align: left;
-  }
-
   .projeto {
     flex-direction: column;
     align-items: flex-start;
@@ -455,4 +476,233 @@ footer {
     max-width: none;
     justify-content: flex-start;
   }
+}
+
+/* ==========================================================
+   TECNOLOGIAS
+   ========================================================== */
+.secao-tecnologias {
+  max-width: 900px;
+  margin: 0 auto 120px auto;
+  padding: 0 20px;
+}
+
+.tec-grade {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tec-grade li {
+  padding: 28px 12px;
+  background-color: var(--cor-card);
+  border-bottom: 3px solid var(--cor-destaque);
+  border-radius: 8px 8px 0 0;
+  font-weight: bold;
+  text-align: center;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.tec-grade li:hover {
+  transform: translateY(-4px);
+  color: var(--cor-destaque);
+}
+
+/* ==========================================================
+   CONTATO
+   ========================================================== */
+.secao-contato {
+  max-width: 900px;
+  margin: 0 auto 80px auto;
+  padding: 0 20px;
+}
+
+.contato-lista {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contato-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--cor-texto-secundario);
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.contato-item strong {
+  color: var(--cor-texto-principal);
+}
+
+.contato-item:hover {
+  color: var(--cor-destaque);
+}
+
+.contato-icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--cor-card);
+  color: var(--cor-destaque);
+  transition: transform 0.3s ease;
+}
+
+.contato-icone svg {
+  width: 24px;
+  height: 24px;
+}
+
+.contato-item:hover .contato-icone {
+  transform: scale(1.1);
+}
+
+/* ==========================================================
+   PÁGINA DA HISTÓRIA
+   ========================================================== */
+
+.paginas,
+.historia {
+  box-sizing: border-box;
+}
+
+.paginas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+.apresentacao {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: flex-start;
+  position: sticky;
+  top: 100px;
+}
+
+.apresentacao img {
+  width: 230px;
+  height: 230px;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.apresentacao img:hover {
+  transform: scale(1.03);
+}
+
+.apresentacao .legenda {
+  margin-top: 12px;
+  font-size: 1rem;
+  color: var(--cor-texto-secundario);
+}
+
+.historia {
+  max-width: 700px;
+  padding: 30px;
+  background-color: var(--cor-card);
+  border-left: 4px solid var(--cor-destaque);
+  border-radius: 0 12px 12px 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.historia h2 {
+  margin: 0 0 20px 0;
+  color: var(--cor-texto-principal);
+  font-size: 2.2rem;
+  text-align: left;
+}
+
+.historia p {
+  margin-bottom: 20px;
+  color: var(--cor-texto-secundario);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  text-align: justify;
+  overflow-wrap: break-word;
+}
+
+.historia p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .paginas {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 30px;
+    margin: 30px auto;
+  }
+
+  .apresentacao {
+    position: static;
+    align-self: center;
+  }
+
+  .apresentacao img {
+    width: 160px;
+    height: 160px;
+  }
+
+  .historia {
+    max-width: none;
+    width: 100%;
+    padding: 20px;
+  }
+
+  .historia h2 {
+    font-size: 1.8rem;
+  }
+
+  .historia p {
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: left;
+  }
+}
+
+/* ==========================================================
+   ANIMAÇÃO AO ROLAR A PÁGINA
+   ========================================================== */
+.revelar {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.revelar.zoom {
+  transform: scale(0.8);
+}
+
+.revelar.visivel {
+  opacity: 1;
+  transform: none;
+}
+
+/* ==========================================================
+   RODAPÉ
+   ========================================================== */
+footer {
+  text-align: center;
+  padding: 30px 20px;
+  border-top: 1px solid var(--cor-card);
 }
