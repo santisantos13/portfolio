@@ -246,12 +246,13 @@ section[id] {
   .topo-texto h1 {
     font-size: 2rem;
   }
-
-  .topo-habilidades,
-  .topo-botoes {
-    justify-content: center;
-  }
 }
+
+.topo-habilidades,
+.topo-botoes {
+  justify-content: center;
+}
+
 
 /* ==========================================================
    TÍTULO DE SEÇÃO (com as linhas dos lados)
